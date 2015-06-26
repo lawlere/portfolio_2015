@@ -13,11 +13,11 @@ Then just run `npm install` in the root directory of this project.
 
 ### Usage
 
-Auto-compile `.less` and `.coffee` files from the `src/less/` and `src/coffee` folders (and place the results in `src/css/` and `src/js/`).
+Auto-compile `.less`  files from the `src/less/`  folders (and place the results in `src/css/`.
 
     grunt watch
 
-    Build the project into the `dist/` folder: compile `.less` and `.coffee` files, run jshint, and combine any static assets that are specified in `build` HTML comments (see examples in src/index.html) with versioned file names (for safe caching).
+    Build the project into the `dist/` folder: compile `.less` files, and combine any static assets that are specified in `build` HTML comments (see examples in src/index.html) with versioned file names (for safe caching).
 
         grunt
 

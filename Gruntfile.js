@@ -12,7 +12,6 @@ module.exports = function(grunt) {
         'grunt-contrib-cssmin',
         'grunt-contrib-concat',
         'grunt-contrib-less',
-        'grunt-contrib-coffee',
         'grunt-usemin',
         'grunt-filerev'
     ].forEach(function(task) { grunt.loadNpmTasks(task); });
@@ -79,18 +78,6 @@ module.exports = function(grunt) {
             }
         },
 
-        // compile coffeescript files in `/src/coffee/` into JS files
-        coffee: {
-            glob_to_multiple: {
-                expand: true,
-                // flatten: true,
-                cwd: 'src/coffee',
-                src: ['**/*.coffee'],
-                dest: 'src/js',
-                ext: '.js'
-            }
-        },
-
         // prep call for usemin (target all html files)
         useminPrepare: {
             html: [
@@ -143,10 +130,6 @@ module.exports = function(grunt) {
 
         // watch command to auto-compile files that have changed
         watch: {
-            coffee: {
-                files: ['src/**/*.coffee'],
-                tasks: ['coffee', 'jshint']
-            },
             less: {
                 files: ['src/**/*.less'],
                 tasks: ['less']
@@ -160,10 +143,10 @@ module.exports = function(grunt) {
     grunt.registerTask('test', ['jshint', 'qunit']);
 
     // like watch, but build stuff at start too!
-    grunt.registerTask('dev', ['less', 'coffee', 'watch']);
+    grunt.registerTask('dev', ['less', 'watch']);
 
     // full build of project to `dist/`
-    grunt.registerTask('default', ['less', 'coffee', 'jshint', 'clean', 'copy',
+    grunt.registerTask('default', ['less', 'jshint', 'clean', 'copy',
                                    'useminPrepare',
                                    'concat', 'uglify', 'cssmin',
                                    'filerev',

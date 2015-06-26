@@ -1,6 +1,6 @@
 {
-  "name": "static-less-coffeescript-grunt-project",
-  "author": "Your Name <yourname@sample.com> (http://sample.com)",
+  "name": "www.emmalawler.com",
+  "author": "Emma Lawler (http://emmalawler.com)",
   "version": "0.0.0",
   "devDependencies": {
     "grunt": "~0.4.5",
@@ -14,7 +14,6 @@
     "grunt-contrib-concat": "~0.4.0",
     "grunt-contrib-watch": "~0.6.1",
     "grunt-contrib-nodeunit": "~0.1.2",
-    "grunt-contrib-coffee": "~0.7.0",
     "grunt-usemin": "~2.1.1",
     "grunt-filerev": "~0.2.1"
   }
