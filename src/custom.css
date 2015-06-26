@@ -1,0 +1,13 @@
+body {
+  background-color: #F4F4F4;
+}
+.container {
+  background-color: #ffffff;
+}
+#bay-image {
+  height: 600px;
+  background-image: url("/img/bay-image.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+}
