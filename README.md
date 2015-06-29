@@ -1,29 +1,24 @@
-# Emma Lawler Portfolio
+# Emma Lawler Portfolio 2015
 
-## Source
-
-This forks [mrcoles' grunt project](https://github.com/mrcoles/static-less-coffeescript-grunt-project)
-
-
-### Installation
+## Installation
 
 Install [nodejs and npm](http://nodejs.org/download/) (they come together), then [install grunt-cli](http://gruntjs.com/getting-started).
 
-Then just run `npm install` in the root directory of this project.
+Then just run `make` in the root directory of this project to build and create a dev server
 
-### Usage
+## Usage
 
-Auto-compile `.less`  files from the `src/less/`  folders (and place the results in `src/css/`.
+To run the dev server, in the root of the directory run `make`. This will build all of the files and start a dev server at [localhost:8000](http://localhost:8000).
 
-    grunt watch
+# Contributing
 
-    Build the project into the `dist/` folder: compile `.less` files, and combine any static assets that are specified in `build` HTML comments (see examples in src/index.html) with versioned file names (for safe caching).
+* Modify files in the `/src/` folder
+* Only modify `.less` files - do not modify `.css` files directly.
 
-        grunt
+## Deployment
 
-        ### Notes
+Build the website with `make build`. The final website will be outputted in the `/build/` folder.
 
-        The project expects a specific structure of all development files inside the `src/` folder, just one HTML file as `index.html`, and specific names for the packaged and minified assets. Look in `Gruntfile.js` for more details and to change settings/functionality.
+## Source
 
-        If you want to store files directly in `src/css/` or `src/js/`, then make sure to remove the ignores for them inside the `.gitignore` file.
-
+This repo started with [mrcoles' grunt project](https://github.com/mrcoles/static-less-coffeescript-grunt-project).
