@@ -6775,16 +6775,22 @@ body {
   background-color: #ffffff;
 }
 #bay-image {
-  height: 600px;
+  height: 700px;
   background-image: url("/img/bay-image.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: 50% 50%;
   text-align: center;
 }
-#lawler-logo {
+#bay-image #lawler-logo {
   width: 357px;
-  margin-top: 40px;
+  padding-top: 40px;
+}
+#bay-image #tagline {
+  color: white;
+  font-weight: 100;
+  font-size: 80px;
+  padding-top: 200px;
 }
 .container-fluid {
   max-width: 1274px;
