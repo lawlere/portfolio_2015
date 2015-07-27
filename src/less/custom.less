@@ -2,7 +2,11 @@ body {
     background-color: #F4F4F4;
 }
 
-.container {
+img {
+    max-width: 100%;
+}
+
+.container-fluid {
     background-color: #ffffff;
 }
 
@@ -23,6 +27,8 @@ body {
         font-weight: 100;
         font-size: 80px;
         padding-top: 200px;
+        max-width: 80%;
+        margin: 0 auto;
     }
 }
 
@@ -31,3 +37,35 @@ body {
     max-width: 1274px;
 }
 
+#social_icons {
+    margin-top: 30px;
+    .icon {
+        width: 60px;
+        margin: 30px;
+    }
+}
+
+#jobs-carousel {
+    @carousel-padding: 15px;
+    padding-top: @carousel-padding;
+    img {
+    }
+    .col-left {
+        padding-left: @carousel-padding;
+        padding-right: floor(@carousel-padding / 2);
+    }
+    .col-middle {
+        padding-left: ceil(@carousel-padding / 2);
+        padding-right: ceil(@carousel-padding / 2);
+    }
+    .col-right {
+        padding-left: floor(@carousel-padding / 2);
+        padding-right: @carousel-padding;
+    }
+}
+
+#jobs-container {
+    img {
+        max-width: 100%;
+    }
+}
