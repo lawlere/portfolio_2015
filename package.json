@@ -16,5 +16,9 @@
     "grunt-contrib-nodeunit": "~0.1.2",
     "grunt-usemin": "~2.1.1",
     "grunt-filerev": "~0.2.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lawlere/portfolio_2015.git"
   }
 }
