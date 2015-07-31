@@ -74,7 +74,7 @@ var Mermaid = function(config) {
 
     this.set_slide = function(index) {
         // TODO
-    }
+    };
 
     this.advance_right = function() {
         // TODO
