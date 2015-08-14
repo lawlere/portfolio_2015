@@ -14,7 +14,7 @@ machine:
 
 dependencies:
   post:
-    - make build:
+    - grunt:
         timeout: 300 # 5 min
 
 test:
