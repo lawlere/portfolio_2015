@@ -2,7 +2,7 @@
   "name": "www.emmalawler.com",
   "author": "Emma Lawler (http://emmalawler.com)",
   "version": "0.0.0",
-  "devDependencies": {
+  "dependencies": {
     "grunt": "~0.4.5",
     "grunt-contrib-jshint": "~0.10.0",
     "grunt-contrib-qunit": "~0.4.0",
