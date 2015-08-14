@@ -1,4 +1,5 @@
 # Emma Lawler Portfolio 2015
+[![Circle CI](https://circleci.com/gh/lawlere/portfolio_2015.svg?style=svg)](https://circleci.com/gh/lawlere/portfolio_2015)
 
 ## Installation
 
