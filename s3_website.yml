@@ -1,3 +1,5 @@
+s3_id: <%= ENV['s3_id'] %>
+s3_secret: <%= ENV['s3_secret'] %>
 s3_bucket: <%= ENV['s3_bucket'] %>
 site: dist
 gzip: false
