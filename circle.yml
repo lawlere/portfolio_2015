@@ -14,7 +14,7 @@ machine:
 
 dependencies:
   post:
-    - make build
+    - make build:
         timeout: 300 # 5 min
 
 test:
