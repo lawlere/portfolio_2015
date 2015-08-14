@@ -13,6 +13,8 @@ machine:
     version: 0.12.7
 
 dependencies:
+  pre:
+    - npm install -g grunt-cli
   post:
     - grunt:
         timeout: 300 # 5 min
