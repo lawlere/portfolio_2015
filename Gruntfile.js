@@ -2,13 +2,11 @@ module.exports = function(grunt) {
 
     // load tasks
     [
-        'grunt-contrib-jshint',
         'grunt-contrib-qunit',
         'grunt-contrib-watch',
         'grunt-contrib-clean',
         'grunt-contrib-copy',
         'grunt-contrib-concat',
-        'grunt-contrib-uglify',
         'grunt-contrib-cssmin',
         'grunt-contrib-concat',
         'grunt-contrib-less',
@@ -111,22 +109,6 @@ module.exports = function(grunt) {
             files: ['test/**/*.html']
         },
 
-        // validate JS files using jshint (great for catching simple bugs)
-        jshint: {
-            files: ['gruntfile.js', 'src/**/*.js', 'test/**/*.js'],
-            options: {
-                // options here to override JSHint defaults
-                globals: {
-                    jQuery: true,
-                    console: true,
-                    module: true,
-                    document: true
-                },
-                ignores: [
-                    // enter paths to ignore here, e.g., 'src/js/jquery.js'
-                ]
-            }
-        },
 
         // watch command to auto-compile files that have changed
         watch: {
@@ -140,15 +122,15 @@ module.exports = function(grunt) {
     // Composite tasks...
 
     // run tests
-    grunt.registerTask('test', ['jshint', 'qunit']);
+    grunt.registerTask('test', ['qunit']);
 
     // like watch, but build stuff at start too!
     grunt.registerTask('dev', ['less', 'watch']);
 
     // full build of project to `dist/`
-    grunt.registerTask('default', ['less', 'jshint', 'clean', 'copy',
+    grunt.registerTask('default', ['less', 'clean', 'copy',
                                    'useminPrepare',
-                                   'concat', 'uglify', 'cssmin',
+                                   'concat', 'cssmin',
                                    'filerev',
                                    'usemin']);
 };

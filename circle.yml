@@ -1,0 +1,30 @@
+general:
+  branches:
+    only:
+      - master
+
+machine:
+  timezone:
+    America/Los_Angeles
+  ruby:
+    version:
+      2.2.2
+  node:
+    version: 0.12.7
+
+dependencies:
+  post:
+    - make build
+        timeout: 300 # 5 min
+
+test:
+  override:
+    - exit 0
+
+deployment:
+  production:
+    branch: master
+    commands:
+      - bash deploy.sh:
+          environment:
+            s3_bucket: emmalawler.com

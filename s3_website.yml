@@ -1,0 +1,3 @@
+s3_bucket: <%= ENV['s3_bucket'] %>
+site: dist
+gzip: false
