@@ -51,7 +51,8 @@ module.exports = function(grunt) {
                         'css/**',
                         'js/**',
                         'ico/**',
-                        'img/**'
+                        'img/**',
+                        'templates/**'
                     ],
                     filter: 'isFile'
                 }]
