@@ -14,10 +14,18 @@ $(window).ready(function(){
                 "button_label": "Go to the Kubmo website",
                 "button_url": "http://www.kubmo.builders/",
             },
-        }
+        },
+        preload_images = [
+            /*
+             * Add image paths here that you want explicitely preloaded. Things that are in html ARE already preloaded.
+             * Images in CSS are NOT automatically preloaded (e.g. background() properties).
+             * Carousel image versions ARE automatically preloaded.
+             */
+            "/img/bay-image.jpg",
+        ]
     ;
 
-    m = new Mermaid(config);
+    m = new Mermaid(config, preload_images);
     m.init(); // Does event binding and stuff
 });
 
