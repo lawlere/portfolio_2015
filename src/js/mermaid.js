@@ -3,7 +3,6 @@ var Mermaid = function(config) {
     this.config = config;
     this.current_id = null;
     this.templates = {};
-
     // Formatting
     this.PANEL_ID = "#mermaid-panel";
     this.CAROUSEL_CSS_ID = "#ID-hero";
@@ -13,6 +12,8 @@ var Mermaid = function(config) {
     this.IMAGE_INACTIVE_FORMAT = "/img/carousel/ID_square.png";
     this.IMAGE_ACTIVE_FORMAT = "/img/carousel/ID_spike.png";
     this.TEMPLATE_LOCATION = "/templates/ID.html";
+    this.PRELOAD_CSS = "#pre-load";
+    this.POSTLOAD_CSS = "#post-load";
 
     this.init = function() {
         var self = this;
@@ -38,8 +39,29 @@ var Mermaid = function(config) {
             ;
         });
 
-        // TODO - end a loading screen
+        // Preload images
+        self.preload_images();
+
+        // Swap to real site
+        $(self.POSTLOAD_CSS).show();
+        $(self.PRELOAD_CSS).hide();
     };
+
+    this.preload_image = function(path) {
+        // Preload a SINGLE image
+        $('<img />').attr('src', path).appendTo('body').css('display','none');
+    };
+    this.preload_images = function() {
+        // Preload "active" carousel images, which are not active in the dom
+        var self = this;
+        _.each(self.config, function(data, id) {
+            self.preload_image(
+                self.IMAGE_ACTIVE_FORMAT.replace("ID", id)
+            );
+        });
+
+    };
+
 
     this.set_state_inactive = function() {
         var self = this;

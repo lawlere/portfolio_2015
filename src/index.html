@@ -29,51 +29,104 @@
         <link rel="stylesheet" href="app.css" />
         <!-- add any other stylesheets inside here... -->
         <!-- endbuild -->
+
+        <!-- Add this directly to the page for speed -->
+        <style type="text/css">
+            html, body {
+                height: 100%;
+                margin: 0;
+            }
+            #pre-load {
+                min-width: 100%;
+                min-height: 100%;
+                height:100%;
+                width: 100%;
+
+                background: -webkit-linear-gradient(left top, #00FF9F , #23AEA7); /* For Safari 5.1 to 6.0 */
+                background: -o-linear-gradient(bottom right, #00FF9F, #23AEA7); /* For Opera 11.1 to 12.0 */
+                background: -moz-linear-gradient(bottom right, #00FF9F, #23AEA7); /* For Firefox 3.6 to 15 */
+                background: linear-gradient(to bottom right, #00FF9F , #23AEA7); /* Standard syntax */
+            }
+            #preload td {
+                vertical-align: middle;
+                text-align: center;
+                margin: 0;
+                padding: 0;
+                border: 0;
+                min-width: 100%;
+                min-height: 100%;
+                height:100%;
+                width: 100%;
+            }
+            #pre-load-splash {
+                max-width: 80%;
+                margin: 0 auto;
+                display: block;
+            }
+            @media screen and (min-width: 1000px) {
+                #pre-load-splash { max-width: 20%; }
+            }
+
+
+            #post-load {
+                /* Reverted by app.js when everything is done */
+                display: none;
+            }
+        </style>
     </head>
     <body>
-        <div class="container-fluid">
-            <div class="row" id="bay-image">
-                <img src="/img/logo.png" alt="Emma Lawler" id="lawler-logo">
-                <h1 id="tagline">
-                    <div>Designing products for people to live better lives.</div>
-                </h1>
-                <div id="social_icons">
-                    <a href="https://twitter.com/emmalawler24" target="_blank">
-                        <img src="/img/twitter.png" alt="twitter" class="icon">
-                    </a>
-                    <a href="https://www.linkedin.com/in/emmalawler" target="_blank">
-                        <img src="/img/linkedin.png" alt="linkedin" class="icon">
-                    </a>
-                    <a href="mailto:lawlere24@gmail.com">
-                        <img src="/img/email.png" alt="email" class="icon">
-                    </a>
+        <!-- Anything here renders BEFORE the main content -->
+        <table id="pre-load"> <!-- Thanks, css -->
+            <td> 
+                <img id="pre-load-splash" src="/img/preload.png" alt="Emma Lawler"/>
+            </td>
+        </table>
 
-                </div>
-            </div>
-            <div class="row" id="jobs-carousel">
-                <div class="col-xs-4 col-left">
-                    <img src="/img/carousel/fitstar_square.png" alt="fitstar" id="fitstar-hero">
-                </div>
-                <div class="col-xs-4 col-middle">
-                    <img src="/img/carousel/kubmo_square.png" alt="kubmo" id="kubmo-hero">
-                </div>
-                <div class="col-xs-4 col-right">
-                    <img src="/img/carousel/glassbreakers_square.png" alt="glassbreakers" id="glassbreakers-hero">
-                </div>
-            </div>
+        <!-- Anything here renders AFTER the page load -->
+        <div id="post-load">
+            <div class="container-fluid">
+                <div class="row" id="bay-image">
+                    <img src="/img/logo.png" alt="Emma Lawler" id="lawler-logo">
+                    <h1 id="tagline">
+                        <div>Designing products for people to live better lives.</div>
+                    </h1>
+                    <div id="social_icons">
+                        <a href="https://twitter.com/emmalawler24" target="_blank">
+                            <img src="/img/twitter.png" alt="twitter" class="icon">
+                        </a>
+                        <a href="https://www.linkedin.com/in/emmalawler" target="_blank">
+                            <img src="/img/linkedin.png" alt="linkedin" class="icon">
+                        </a>
+                        <a href="mailto:lawlere24@gmail.com">
+                            <img src="/img/email.png" alt="email" class="icon">
+                        </a>
 
-            <!-- He's where our content goes -->
-            <div id="mermaid-panel">
-            </div>
+                    </div>
+                </div>
+                <div class="row" id="jobs-carousel">
+                    <div class="col-xs-4 col-left">
+                        <img src="/img/carousel/fitstar_square.png" alt="fitstar" id="fitstar-hero">
+                    </div>
+                    <div class="col-xs-4 col-middle">
+                        <img src="/img/carousel/kubmo_square.png" alt="kubmo" id="kubmo-hero">
+                    </div>
+                    <div class="col-xs-4 col-right">
+                        <img src="/img/carousel/glassbreakers_square.png" alt="glassbreakers" id="glassbreakers-hero">
+                    </div>
+                </div>
 
-            <!-- Bottom buttons -->
-            <div class="row" id="bottom-button-row">
-                <a href="#" target="_blank" class="col-xs-12" id="bottom-button-href">
-                    <h3 class="text-center" id="bottom-button-content">Bottom Button</h3>
-                </a>
+                <!-- He's where our content goes -->
+                <div id="mermaid-panel">
+                </div>
+
+                <!-- Bottom buttons -->
+                <div class="row" id="bottom-button-row">
+                    <a href="#" target="_blank" class="col-xs-12" id="bottom-button-href">
+                        <h3 class="text-center" id="bottom-button-content">Bottom Button</h3>
+                    </a>
+                </div>
             </div>
         </div>
-
 
         <script src="/js/jquery-2.1.4.min.js"></script>
         <script src="/js/underscore-min.js"></script>
