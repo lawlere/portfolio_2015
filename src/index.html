@@ -32,8 +32,41 @@
 
         <!-- Add this directly to the page for speed -->
         <style type="text/css">
-            #pre-load {
+            html, body {
+                height: 100%;
+                margin: 0;
             }
+            #pre-load {
+                min-width: 100%;
+                min-height: 100%;
+                height:100%;
+                width: 100%;
+
+                background: -webkit-linear-gradient(left top, #00FF9F , #23AEA7); /* For Safari 5.1 to 6.0 */
+                background: -o-linear-gradient(bottom right, #00FF9F, #23AEA7); /* For Opera 11.1 to 12.0 */
+                background: -moz-linear-gradient(bottom right, #00FF9F, #23AEA7); /* For Firefox 3.6 to 15 */
+                background: linear-gradient(to bottom right, #00FF9F , #23AEA7); /* Standard syntax */
+            }
+            #preload td {
+                vertical-align: middle;
+                text-align: center;
+                margin: 0;
+                padding: 0;
+                border: 0;
+                min-width: 100%;
+                min-height: 100%;
+                height:100%;
+                width: 100%;
+            }
+            #pre-load-splash {
+                max-width: 80%;
+                margin: 0 auto;
+                display: block;
+            }
+            @media screen and (min-width: 1000px) {
+                #pre-load-splash { max-width: 20%; }
+            }
+
 
             #post-load {
                 /* Reverted by app.js when everything is done */
@@ -43,9 +76,11 @@
     </head>
     <body>
         <!-- Anything here renders BEFORE the main content -->
-        <div id="pre-load">
-            Preloading
-        </div>
+        <table id="pre-load"> <!-- Thanks, css -->
+            <td> 
+                <img id="pre-load-splash" src="/img/preload.png" alt="Emma Lawler"/>
+            </td>
+        </table>
 
         <!-- Anything here renders AFTER the page load -->
         <div id="post-load">
