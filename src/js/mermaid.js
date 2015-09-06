@@ -42,6 +42,11 @@ var Mermaid = function(config, images) {
             ;
         });
 
+        // Scroll to top on click of navbar logo
+        $(self.HEADER_LOGO_CSS).click(function(){
+            $('body,html').animate({scrollTop:0},1000);
+        });
+
         // Preload images
         self.preload_images();
 
