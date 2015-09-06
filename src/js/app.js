@@ -1,4 +1,4 @@
-$(document).ready(function(){
+$(window).ready(function(){
     var m,
         config = {
             // id to data
