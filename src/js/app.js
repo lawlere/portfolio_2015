@@ -22,6 +22,7 @@ $(document).ready(function(){
              * Carousel image versions ARE automatically preloaded.
              */
             "/img/bay-image.jpg",
+            "/img/product_slider_1_fitstar.png",
         ]
     ;
 
