@@ -16,6 +16,7 @@ var Mermaid = function(config, images) {
     this.TEMPLATE_LOCATION = "/templates/ID.html";
     this.PRELOAD_CSS = "#pre-load";
     this.POSTLOAD_CSS = "#post-load";
+    this.HEADER_LOGO_CSS = ".header-logo";
 
     this.init = function() {
         var self = this;
