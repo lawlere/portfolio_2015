@@ -1,7 +1,6 @@
-var Mermaid = function(config, images) {
+var Mermaid = function(config) {
     // init
     this.config = config;
-    this.images = images;
     this.current_id = null;
     this.templates = {};
 
@@ -53,22 +52,21 @@ var Mermaid = function(config, images) {
 
     this.preload_image = function(path) {
         // Preload a SINGLE image
+        var i = new Image();
+        i.src = path;
+        this.image_files.push(i);
         $('<img />').attr('src', path).appendTo('body').css('display','none');
     };
 
     this.preload_images = function() {
         var self = this;
+        self.image_files = [];
 
         // Preload "active" carousel images, which are not active in the dom
         _.each(self.config, function(data, id) {
             self.preload_image(
                 self.IMAGE_ACTIVE_FORMAT.replace("ID", id)
             );
-        });
-
-        // Preload explicitly stated images
-        _.each(self.images, function(path) {
-            self.preload_image(path);
         });
     };
 
