@@ -44,8 +44,10 @@ var Mermaid = function(config) {
         self.preload_images();
 
         // Swap to real site when dom loads
-        $(self.POSTLOAD_CSS).show();
-        $(self.PRELOAD_CSS).hide();
+        $(window).ready(function() {
+            $(self.POSTLOAD_CSS).show();
+            $(self.PRELOAD_CSS).hide();
+        });
     };
 
     this.preload_image = function(path) {
