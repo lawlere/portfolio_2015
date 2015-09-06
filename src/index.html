@@ -29,51 +29,69 @@
         <link rel="stylesheet" href="app.css" />
         <!-- add any other stylesheets inside here... -->
         <!-- endbuild -->
+
+        <!-- Add this directly to the page for speed -->
+        <style type="text/css">
+            #pre-load {
+            }
+
+            #post-load {
+                /* Reverted by app.js when everything is done */
+                display: none;
+            }
+        </style>
     </head>
     <body>
-        <div class="container-fluid">
-            <div class="row" id="bay-image">
-                <img src="/img/logo.png" alt="Emma Lawler" id="lawler-logo">
-                <h1 id="tagline">
-                    <div>Designing products for people to live better lives.</div>
-                </h1>
-                <div id="social_icons">
-                    <a href="https://twitter.com/emmalawler24" target="_blank">
-                        <img src="/img/twitter.png" alt="twitter" class="icon">
-                    </a>
-                    <a href="https://www.linkedin.com/in/emmalawler" target="_blank">
-                        <img src="/img/linkedin.png" alt="linkedin" class="icon">
-                    </a>
-                    <a href="mailto:lawlere24@gmail.com">
-                        <img src="/img/email.png" alt="email" class="icon">
-                    </a>
-
-                </div>
-            </div>
-            <div class="row" id="jobs-carousel">
-                <div class="col-xs-4 col-left">
-                    <img src="/img/carousel/fitstar_square.png" alt="fitstar" id="fitstar-hero">
-                </div>
-                <div class="col-xs-4 col-middle">
-                    <img src="/img/carousel/kubmo_square.png" alt="kubmo" id="kubmo-hero">
-                </div>
-                <div class="col-xs-4 col-right">
-                    <img src="/img/carousel/glassbreakers_square.png" alt="glassbreakers" id="glassbreakers-hero">
-                </div>
-            </div>
-
-            <!-- He's where our content goes -->
-            <div id="mermaid-panel">
-            </div>
-
-            <!-- Bottom buttons -->
-            <div class="row" id="bottom-button-row">
-                <a href="#" target="_blank" class="col-xs-12" id="bottom-button-href">
-                    <h3 class="text-center" id="bottom-button-content">Bottom Button</h3>
-                </a>
-            </div>
+        <!-- Anything here renders BEFORE the main content -->
+        <div id="pre-load">
+            Preloading
         </div>
 
+        <!-- Anything here renders AFTER the page load -->
+        <div id="post-load">
+            <div class="container-fluid">
+                <div class="row" id="bay-image">
+                    <img src="/img/logo.png" alt="Emma Lawler" id="lawler-logo">
+                    <h1 id="tagline">
+                        <div>Designing products for people to live better lives.</div>
+                    </h1>
+                    <div id="social_icons">
+                        <a href="https://twitter.com/emmalawler24" target="_blank">
+                            <img src="/img/twitter.png" alt="twitter" class="icon">
+                        </a>
+                        <a href="https://www.linkedin.com/in/emmalawler" target="_blank">
+                            <img src="/img/linkedin.png" alt="linkedin" class="icon">
+                        </a>
+                        <a href="mailto:lawlere24@gmail.com">
+                            <img src="/img/email.png" alt="email" class="icon">
+                        </a>
+
+                    </div>
+                </div>
+                <div class="row" id="jobs-carousel">
+                    <div class="col-xs-4 col-left">
+                        <img src="/img/carousel/fitstar_square.png" alt="fitstar" id="fitstar-hero">
+                    </div>
+                    <div class="col-xs-4 col-middle">
+                        <img src="/img/carousel/kubmo_square.png" alt="kubmo" id="kubmo-hero">
+                    </div>
+                    <div class="col-xs-4 col-right">
+                        <img src="/img/carousel/glassbreakers_square.png" alt="glassbreakers" id="glassbreakers-hero">
+                    </div>
+                </div>
+
+                <!-- He's where our content goes -->
+                <div id="mermaid-panel">
+                </div>
+
+                <!-- Bottom buttons -->
+                <div class="row" id="bottom-button-row">
+                    <a href="#" target="_blank" class="col-xs-12" id="bottom-button-href">
+                        <h3 class="text-center" id="bottom-button-content">Bottom Button</h3>
+                    </a>
+                </div>
+            </div>
+        </div>
 
         <script src="/js/jquery-2.1.4.min.js"></script>
         <script src="/js/underscore-min.js"></script>
