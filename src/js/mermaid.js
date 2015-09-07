@@ -17,6 +17,8 @@ var Mermaid = function(config, images) {
     this.PRELOAD_CSS = "#pre-load";
     this.POSTLOAD_CSS = "#post-load";
     this.HEADER_LOGO_CSS = ".header-logo";
+    this.HEADER_CSS = "#bay-image"; // After which navbar shows
+    this.NAVBAR_CSS= ".navbar";
 
     this.init = function() {
         var self = this;
@@ -54,6 +56,10 @@ var Mermaid = function(config, images) {
         $(window).load(function() {
             $(self.POSTLOAD_CSS).show();
             $(self.PRELOAD_CSS).hide();
+
+            // Call after elements exist because it uses one's height
+            self.initiate_navbar_listener();
+
         });
     };
 
@@ -77,6 +83,22 @@ var Mermaid = function(config, images) {
             self.preload_image(path);
         });
     };
+
+    this.initiate_navbar_listener = function() {
+        // Called during initialize. Don't do it until the header has a height!
+        var self = this,
+            threshold = $(self.HEADER_CSS).height() * 0.75 // Slightly less
+        ;
+
+        $(window).scroll(function () {
+            if ($(this).scrollTop() > threshold) {
+                $(self.NAVBAR_CSS).fadeIn();
+            } else {
+                $(self.NAVBAR_CSS).fadeOut();
+            }
+        });
+    };
+
 
     this.set_state_inactive = function() {
         var self = this;
