@@ -1,6 +1,8 @@
 /* Note: preload and postload css is embedded in index.html directly! */
 
-@primary-color: #15E2C4;
+@import "bootstrap/variables.less";
+
+@brand-primary: #15E2C4;
 
 body {
     background-color: #F4F4F4;
@@ -21,6 +23,12 @@ img {
     background-repeat: no-repeat;
     background-position: 50% 50%;
     text-align: center;
+    overflow: hidden;
+
+    .content {
+        padding: 0 5%;
+        margin: 0;
+    }
 
     #lawler-logo {
         width: 357px;
@@ -29,10 +37,59 @@ img {
     #tagline {
         color: white;
         font-weight: 100;
-        font-size: 80px;
-        padding-top: 200px;
-        max-width: 80%;
         margin: 0 auto;
+    }
+
+    .social-icons {
+        margin-top: 30px;
+        .icon {
+            width: 60px;
+            margin: 30px;
+        }
+    }
+
+    /*
+    Note: These values probably have to be changed
+    if the tagline changes. Widths are defined in 
+    boostrap/variables.less file.
+    */
+    @media (min-width: @screen-xs-min) {
+        #tagline { 
+            font-size: 60px;
+            padding-top: 180px;
+        }
+        .social-icons { margin-top: 20px; }
+    }
+
+    @media (min-width: @screen-sm-min) {
+        #tagline { 
+            font-size: 75px;
+            padding-top: 160px;
+        }
+        .social-icons { margin-top: 30px; }
+    }
+
+    @media (min-width: @screen-md-min) {
+        #tagline {
+            padding-top: 200px;
+            font-size: 75px;
+        }
+        .social-icons .icon {
+            width: 50px;
+        }
+    }
+
+    @media (min-width: @screen-lg-min) {
+        #tagline {
+            padding-top: 200px;
+            font-size: 80px;
+        }
+        .social-icons .icon {
+            width: 60px;
+        }
+        .content {
+            padding: 0 10%;
+        }
     }
 }
 
@@ -41,13 +98,6 @@ img {
     max-width: 1274px;
 }
 
-#social_icons {
-    margin-top: 30px;
-    .icon {
-        width: 60px;
-        margin: 30px;
-    }
-}
 
 #jobs-carousel {
     @carousel-padding: 15px;
@@ -101,7 +151,7 @@ This governs the carousel sections
 
 #bottom-button-row {
     display: none; // For load
-    background-color: @primary-color;
+    background-color: @brand-primary;
 
     h3 {
         color: #ffffff;
@@ -112,14 +162,13 @@ This governs the carousel sections
 .navbar {
     display: none; // Shown selectively by mermaid.js
 
-    @navbar-height: 70px;
     border: 0;
     height: @navbar-height;
     .container, .row, .col, .pull_right, a {
         height: @navbar-height;
     }
     a { display: inline-block;}
-    background-color: @primary-color;
+    background-color: @brand-primary;
     .center {text-align: center;}
     img {
         max-height: 100%;
