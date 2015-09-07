@@ -53,18 +53,41 @@ img {
     if the tagline changes. Widths are defined in 
     boostrap/variables.less file.
     */
+    @media (max-width: (@screen-xs-min - 1)) {
+        // iPhone hits here when vertical
+        #tagline { 
+            font-size: 40px;
+            padding-top: 180px;
+        }
+        .social-icons { 
+            margin-top: 20px; 
+            .icon {
+                width: 40px;
+                margin: 20px;
+            }
+        }
+    }
+
     @media (min-width: @screen-xs-min) {
         #tagline { 
             font-size: 60px;
             padding-top: 180px;
+            font-weight: 100;
         }
-        .social-icons { margin-top: 20px; }
+        .social-icons { 
+            margin-top: 20px; 
+            .icon {
+                width: 50px;
+                margin: 30px;
+            }
+        }
     }
 
     @media (min-width: @screen-sm-min) {
         #tagline { 
             font-size: 75px;
             padding-top: 160px;
+            font-weight: 100;
         }
         .social-icons { margin-top: 30px; }
     }
@@ -75,7 +98,7 @@ img {
             font-size: 75px;
         }
         .social-icons .icon {
-            width: 50px;
+            width: 60px;
         }
     }
 
