@@ -13,12 +13,15 @@ var Mermaid = function(config, images) {
     this.BOTTOM_BUTTON_CONTENT_CSS_ID = "#bottom-button-content";
     this.IMAGE_INACTIVE_FORMAT = "/img/carousel/ID_square.png";
     this.IMAGE_ACTIVE_FORMAT = "/img/carousel/ID_spike.png";
+    this.IMAGE_MOBILE_INACTIVE_FORMAT = "/img/carousel/ID_mobile_closed.png";
+    this.IMAGE_MOBILE_ACTIVE_FORMAT = "/img/carousel/ID_spike.png";
     this.TEMPLATE_LOCATION = "/templates/ID.html";
     this.PRELOAD_CSS = "#pre-load";
     this.POSTLOAD_CSS = "#post-load";
     this.HEADER_LOGO_CSS = ".header-logo";
     this.HEADER_CSS = "#bay-image"; // After which navbar shows
     this.NAVBAR_CSS= ".navbar";
+    this.COLUMNS = 12; // Bootstrap columns
 
     this.init = function() {
         var self = this;
@@ -34,6 +37,9 @@ var Mermaid = function(config, images) {
                 dataType: 'html',
             });
         });
+
+        // Build carousel and mobile buttons
+        self.build_nav();
 
         // Carousel click listener
         _.each(self.config, function(data, id) {
@@ -66,6 +72,47 @@ var Mermaid = function(config, images) {
     this.preload_image = function(path) {
         // Preload a SINGLE image
         $('<img />').attr('src', path).appendTo('body').css('display','none');
+    };
+
+
+    this.build_nav = function() {
+        var self = this,
+            carousel_width,
+            column_format = '<div class="col-xs-WIDTH PADDING_CLASS"><img src="IMAGE_INACTIVE" alt="ALT" id="ID"></div>',
+            column,
+            loop_count
+        ;
+
+        // This breaks when you have more than 4 items. You have been warnedj
+        column_width = Math.floor(self.COLUMNS / Object.keys(self.config).length);
+        loop_count = 0;
+        _.each(self.config, function(data, id) {
+            loop_count++;
+
+            // Build the desktop column
+            column = column_format
+                .replace("WIDTH", column_width)
+                .replace("ID", id + "-hero")
+                .replace("ALT", id)
+                .replace(
+                    "IMAGE_INACTIVE",
+                    self.IMAGE_INACTIVE_FORMAT.replace("ID", id)
+                )
+                .replace(
+                    "PADDING_CLASS",
+                    function() {
+                        if (loop_count == 1) {
+                            return "col-left";
+                        }
+                        if (loop_count == Object.keys(self.config).length) {
+                            return "col-right";
+                        }
+                        return  "col-middle";
+                    }
+                )
+            ;
+            $("#jobs-carousel").append(column);
+        });
     };
 
     this.preload_images = function() {
