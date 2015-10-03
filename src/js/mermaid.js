@@ -13,8 +13,8 @@ var Mermaid = function(config, images) {
     this.BOTTOM_BUTTON_CONTENT_CSS_ID = "#bottom-button-content";
     this.IMAGE_INACTIVE_FORMAT = "/img/carousel/ID_square.png";
     this.IMAGE_ACTIVE_FORMAT = "/img/carousel/ID_spike.png";
-    this.IMAGE_MOBILE_INACTIVE_FORMAT = "/img/carousel/ID_mobile_closed.png";
-    this.IMAGE_MOBILE_ACTIVE_FORMAT = "/img/carousel/ID_spike.png";
+    this.IMAGE_MOBILE_INACTIVE_FORMAT = "/img/carousel/ID_mobile_open.png";
+    this.IMAGE_MOBILE_ACTIVE_FORMAT = "/img/carousel/ID_mobile_close.png";
     this.TEMPLATE_LOCATION = "/templates/ID.html";
     this.PRELOAD_CSS = "#pre-load";
     this.POSTLOAD_CSS = "#post-load";
@@ -78,7 +78,8 @@ var Mermaid = function(config, images) {
     this.build_nav = function() {
         var self = this,
             carousel_width,
-            column_format = '<div class="col-xs-WIDTH PADDING_CLASS"><img src="IMAGE_INACTIVE" alt="ALT" id="ID"></div>',
+            column_format = '<div class="col col-xs-WIDTH PADDING_CLASS"><img src="IMAGE_INACTIVE" alt="ALT" id="ID"></div>',
+            mobile_format = '<div class="col col-xs-12"><img src="IMAGE_MOBILE_INACTIVE" alt="ALT"></div>',
             column,
             loop_count
         ;
@@ -112,6 +113,16 @@ var Mermaid = function(config, images) {
                 )
             ;
             $("#jobs-carousel").append(column);
+
+            // Build the mobile
+            mobile = mobile_format
+                .replace("ALT", id)
+                .replace(
+                    "IMAGE_MOBILE_INACTIVE",
+                    self.IMAGE_MOBILE_INACTIVE_FORMAT.replace("ID", id)
+                )
+            ;
+            $("#jobs-stacked").append(mobile);
         });
     };
 
