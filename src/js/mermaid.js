@@ -188,6 +188,7 @@ var Mermaid = function(config, images) {
         ;
 
 
+        $(self.BOTTOM_BUTTON_ROW_CSS_ID).hide();
         this.current_id = null;
         $(this.PANEL_ID).empty();
     };
@@ -222,7 +223,7 @@ var Mermaid = function(config, images) {
 
 
 
-        // TODO - scroll to content
+        // scroll to content
         $('html, body').animate({
             scrollTop: $("#mermaid-panel").offset().top - $('.navbar').height()
         }, 1000);
