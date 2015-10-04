@@ -28,8 +28,7 @@ In general:
 
 * Pick an **id** for the section, e.g. "fitstar"
 * In `src/js/app.js` - register the config values. The key should be the id and the value should copy the prior formats to configure where the footer button links to and its label.
-* In the folder`src/img/carousel/`: Add an "active" image format (when the section is open) as `ID_spike.png`, e.g. "kubmo_spike.png". Add an "inactive" image format (when the section is collapsed) as `ID_square.png` - e.g. "kubmo_square.png"
-* Add a button in the `jobs-carousel` for section. The id of the image should be `ID-hero`, e.g. "kubmo-hero". The html image source should be the inactive image.
+* In the folder`src/img/carousel/`: Add an "active" image format (when the section is open) as `ID_spike.png`, e.g. "kubmo_spike.png". Add an "inactive" image format (when the section is collapsed) as `ID_square.png` - e.g. "kubmo_square.png". In addition, add mobile "open" and "close" images - e.g "kubmo_mobile_open.png" and "kubmo_mobile_close.png"
 * Add an html template for the section to `src/templates` as `ID.html` - e.g. "kubmo.html"
 * High five
 

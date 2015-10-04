@@ -7,18 +7,21 @@ var Mermaid = function(config, images) {
 
     // Formatting
     this.PANEL_ID = "#mermaid-panel";
-    this.CAROUSEL_CSS_ID = "#ID-hero";
+    this.BUTTON_LISTENER_CLASS = "ID-button-listener";
     this.BOTTOM_BUTTON_ROW_CSS_ID = "#bottom-button-row";
     this.BOTTOM_BUTTON_HREF_CSS_ID = "#bottom-button-href";
     this.BOTTOM_BUTTON_CONTENT_CSS_ID = "#bottom-button-content";
     this.IMAGE_INACTIVE_FORMAT = "/img/carousel/ID_square.png";
     this.IMAGE_ACTIVE_FORMAT = "/img/carousel/ID_spike.png";
+    this.IMAGE_MOBILE_INACTIVE_FORMAT = "/img/carousel/ID_mobile_open.png";
+    this.IMAGE_MOBILE_ACTIVE_FORMAT = "/img/carousel/ID_mobile_close.png";
     this.TEMPLATE_LOCATION = "/templates/ID.html";
     this.PRELOAD_CSS = "#pre-load";
     this.POSTLOAD_CSS = "#post-load";
     this.HEADER_LOGO_CSS = ".header-logo";
     this.HEADER_CSS = "#bay-image"; // After which navbar shows
     this.NAVBAR_CSS= ".navbar";
+    this.COLUMNS = 12; // Bootstrap columns
 
     this.init = function() {
         var self = this;
@@ -35,11 +38,14 @@ var Mermaid = function(config, images) {
             });
         });
 
-        // Carousel click listener
+        // Build carousel and mobile buttons
+        self.build_nav();
+
+        // Click listener
         _.each(self.config, function(data, id) {
-            $(self.CAROUSEL_CSS_ID.replace("ID", id))
+            $("." + self.BUTTON_LISTENER_CLASS.replace("ID", id))
                 .click(function() {
-                    self.change_id(id);
+                    self.update_active_button(id);
                 })
             ;
         });
@@ -66,6 +72,62 @@ var Mermaid = function(config, images) {
     this.preload_image = function(path) {
         // Preload a SINGLE image
         $('<img />').attr('src', path).appendTo('body').css('display','none');
+    };
+
+
+    this.build_nav = function() {
+        var self = this,
+            carousel_width,
+            column_format = '<div class="col col-xs-WIDTH PADDING_CLASS"><img src="IMAGE_INACTIVE" alt="ALT" class="BUTTON_LISTENER_CLASS"></div>',
+            mobile_format = '<div class="col col-xs-12"><img src="IMAGE_MOBILE_INACTIVE" alt="ALT" class="BUTTON_LISTENER_CLASS"></div>',
+            column,
+            loop_count,
+            button_listener_class
+        ;
+
+        // This breaks when you have more than 4 items. You have been warnedj
+        column_width = Math.floor(self.COLUMNS / Object.keys(self.config).length);
+        loop_count = 0;
+        _.each(self.config, function(data, id) {
+            loop_count++;
+            button_listener_class = self.BUTTON_LISTENER_CLASS.replace("ID", id);
+
+            // Build the desktop column
+            column = column_format
+                .replace("WIDTH", column_width)
+                .replace("ID", id + "-hero")
+                .replace("ALT", id)
+                .replace("BUTTON_LISTENER_CLASS", button_listener_class)
+                .replace(
+                    "IMAGE_INACTIVE",
+                    self.IMAGE_INACTIVE_FORMAT.replace("ID", id)
+                )
+                .replace(
+                    "PADDING_CLASS",
+                    function() {
+                        if (loop_count == 1) {
+                            return "col-left";
+                        }
+                        if (loop_count == Object.keys(self.config).length) {
+                            return "col-right";
+                        }
+                        return  "col-middle";
+                    }
+                )
+            ;
+            $("#jobs-carousel").append(column);
+
+            // Build the mobile
+            mobile = mobile_format
+                .replace("ALT", id)
+                .replace("BUTTON_LISTENER_CLASS", button_listener_class)
+                .replace(
+                    "IMAGE_MOBILE_INACTIVE",
+                    self.IMAGE_MOBILE_INACTIVE_FORMAT.replace("ID", id)
+                )
+            ;
+            $("#jobs-stacked").append(mobile);
+        });
     };
 
     this.preload_images = function() {
@@ -101,14 +163,30 @@ var Mermaid = function(config, images) {
 
 
     this.set_state_inactive = function() {
-        var self = this;
+        var self = this,
+            button_class
+        ;
+
         // Set image to inactive
-        $(self.CAROUSEL_CSS_ID.replace("ID", this.current_id))
+        $("#jobs-carousel ." + self.BUTTON_LISTENER_CLASS.replace("ID", this.current_id))
             .attr(
                 "src",
                 self.IMAGE_INACTIVE_FORMAT.replace("ID", self.current_id)
             )
         ;
+
+        // Unhide buttons on mobile
+        _.each(self.config, function(data, id) {
+            $("#jobs-stacked ." + self.BUTTON_LISTENER_CLASS.replace("ID", id)).show();
+        });
+
+        $("#jobs-stacked ." + self.BUTTON_LISTENER_CLASS.replace("ID", this.current_id))
+            .attr(
+                "src",
+                self.IMAGE_MOBILE_INACTIVE_FORMAT.replace("ID", self.current_id)
+            )
+        ;
+
 
         this.current_id = null;
         $(this.PANEL_ID).empty();
@@ -119,14 +197,38 @@ var Mermaid = function(config, images) {
         self.current_id = new_id;
 
         // Set image to active
-        $(self.CAROUSEL_CSS_ID.replace("ID", this.current_id))
+        $("#jobs-carousel ." + self.BUTTON_LISTENER_CLASS.replace("ID", this.current_id))
             .attr(
                 "src",
                 self.IMAGE_ACTIVE_FORMAT.replace("ID", self.current_id)
             )
         ;
 
-        $(this.PANEL_ID).html(self.templates[new_id]);
+        $("#jobs-stacked ." + self.BUTTON_LISTENER_CLASS.replace("ID", this.current_id))
+            .attr(
+                "src",
+                self.IMAGE_MOBILE_ACTIVE_FORMAT.replace("ID", self.current_id)
+            )
+        ;
+
+        // On mobile - we hide the other buttons
+        _.each(self.config, function(data, match_id) {
+
+            if (match_id != new_id) {
+                    button_class = self.BUTTON_LISTENER_CLASS.replace("ID", match_id);
+                $("#jobs-stacked ." + button_class).hide();
+            }
+        });
+
+
+
+        // TODO - scroll to content
+        $('html, body').animate({
+            scrollTop: $("#mermaid-panel").offset().top - $('.navbar').height()
+        }, 1000);
+
+        // Set content
+        $(self.PANEL_ID).html(self.templates[new_id]);
 
         // Set bottom button
         $(self.BOTTOM_BUTTON_HREF_CSS_ID).attr(
@@ -138,18 +240,18 @@ var Mermaid = function(config, images) {
         );
         $(self.BOTTOM_BUTTON_ROW_CSS_ID).show();
 
-        // Assumes completely new id through change_id function
+        // Assumes completely new id through update_active_button function
     };
 
-    this.change_id = function(new_id) {
-        if (this.current_id == new_id) {
-            // Rewind to first slide
-            return;
-        }
-        if (this.current_id !== null) {
+    this.update_active_button = function(new_id) {
+        // Copy so we don't remove active and then try to overwrite it!
+        var current_id = this.current_id;
+        if (current_id !== null) {
             this.set_state_inactive();
         }
-        this.set_state_active(new_id);
+        if (current_id !== new_id) {
+            this.set_state_active(new_id);
+        }
     };
 };
 
