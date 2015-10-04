@@ -164,7 +164,10 @@ var Mermaid = function(config, images) {
 
     this.set_state_inactive = function() {
         var self = this,
-            button_class
+            button_class,
+            button_listener_class,
+            mobile_button,
+            cur_offset
         ;
 
         // Set image to inactive
@@ -176,9 +179,21 @@ var Mermaid = function(config, images) {
         ;
 
         // Unhide buttons on mobile
+
+        if (self.current_id !== null) {
+            button_listener_class= self.BUTTON_LISTENER_CLASS.replace("ID", self.current_id);
+            mobile_button = $("#jobs-stacked ." + button_listener_class);
+            if (mobile_button.is(":visible")) {
+                cur_offset = mobile_button.offset().top - $(document).scrollTop();
+            }
+        }
         _.each(self.config, function(data, id) {
             $("#jobs-stacked ." + self.BUTTON_LISTENER_CLASS.replace("ID", id)).show();
         });
+        // return to starting position
+        if (mobile_button !== null && mobile_button.is(":visible")) {
+            $(document).scrollTop(mobile_button.offset().top-cur_offset);
+        }
 
         $("#jobs-stacked ." + self.BUTTON_LISTENER_CLASS.replace("ID", this.current_id))
             .attr(
@@ -194,8 +209,13 @@ var Mermaid = function(config, images) {
     };
 
     this.set_state_active = function(new_id) {
-        var self = this;
+        var self = this,
+            cur_offset,
+            button_listener_class = self.BUTTON_LISTENER_CLASS.replace("ID", new_id),
+            mobile_button = $("#jobs-stacked ." + button_listener_class)
+        ;
         self.current_id = new_id;
+
 
         // Set image to active
         $("#jobs-carousel ." + self.BUTTON_LISTENER_CLASS.replace("ID", this.current_id))
@@ -213,13 +233,21 @@ var Mermaid = function(config, images) {
         ;
 
         // On mobile - we hide the other buttons
+        // Store starting position to avoid jumping around as elements are hidden
+        if (mobile_button.is(":visible")) {
+            cur_offset = mobile_button.offset().top - $(document).scrollTop();
+        }
         _.each(self.config, function(data, match_id) {
 
             if (match_id != new_id) {
-                    button_class = self.BUTTON_LISTENER_CLASS.replace("ID", match_id);
+                button_class = self.BUTTON_LISTENER_CLASS.replace("ID", match_id);
                 $("#jobs-stacked ." + button_class).hide();
             }
         });
+        // return to starting position
+        if (mobile_button.is(":visible")) {
+            $(document).scrollTop(mobile_button.offset().top-cur_offset);
+        }
 
 
 
