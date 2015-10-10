@@ -3,6 +3,7 @@
 @import "bootstrap/variables.less";
 
 @brand-primary: #15E2C4;
+@hover-color: #35fee1;
 
 body {
     background-color: #F4F4F4;
@@ -180,6 +181,14 @@ This governs the carousel sections
     h3 {
         color: #ffffff;
         font-weight: 300;
+        padding: 20px;
+        margin: 0;
+    }
+    a:hover {
+        text-decoration: none;
+    }
+    &:hover {
+        background-color: @hover-color;
     }
 }
 
