@@ -6,13 +6,13 @@ $(document).ready(function(){
                 "button_label": "Go to the FitStar Website",
                 "button_url": "http://fitstar.com/",
             },
-            "glassbreakers": {
-                "button_label": "Go to the Glassbreakers website",
-                "button_url": "https://www.glassbreakers.co/",
-            },
             "kubmo": {
                 "button_label": "Go to the Kubmo website",
                 "button_url": "http://www.kubmo.builders/",
+            },
+            "glassbreakers": {
+                "button_label": "Go to the Glassbreakers website",
+                "button_url": "https://www.glassbreakers.co/",
             },
         },
         preload_images = [
