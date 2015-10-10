@@ -162,13 +162,16 @@ var Mermaid = function(config, images) {
     };
 
 
-    this.set_state_inactive = function() {
+    this.set_state_inactive = function(hide_panel) {
         var self = this,
             button_class,
             button_listener_class,
             mobile_button,
             cur_offset
         ;
+
+        // Default value
+        hide_panel = hide_panel || true;
 
         // Set image to inactive
         $("#jobs-carousel ." + self.BUTTON_LISTENER_CLASS.replace("ID", this.current_id))
@@ -206,6 +209,7 @@ var Mermaid = function(config, images) {
         $(self.BOTTOM_BUTTON_ROW_CSS_ID).hide();
         this.current_id = null;
         $(this.PANEL_ID).empty();
+        $(self.PANEL_ID).hide();
     };
 
     this.set_state_active = function(new_id) {
@@ -252,8 +256,9 @@ var Mermaid = function(config, images) {
 
 
         // scroll to content
+        $(self.PANEL_ID).show();
         $('html, body').animate({
-            scrollTop: $("#mermaid-panel").offset().top - $('.navbar').height()
+            scrollTop: $(self.PANEL_ID).offset().top - $('.navbar').height()
         }, 1000);
 
         // Set content
