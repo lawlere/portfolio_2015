@@ -223,6 +223,13 @@ This governs the carousel sections
     .product_images {
         padding-bottom: 20px;
     }
+
+    @media (max-width: @screen-lg-min) {
+        .ipad, .iphone, .web, .iphone_vert, img.fitstar-product-1 {
+            width: 100%;
+            padding: inherit 0;
+        }
+    }
 }
 
 #bottom-button-row {
