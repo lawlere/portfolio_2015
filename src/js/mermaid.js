@@ -60,7 +60,6 @@ var Mermaid = function(config, images) {
 
         // Swap to real site when dom loads
         $(window).load(function() {
-            return; // DELETE THIS TO SHOW THE WEBSITE!!!
             $(self.POSTLOAD_CSS).show();
             $(self.PRELOAD_CSS).hide();
 
