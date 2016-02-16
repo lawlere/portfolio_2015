@@ -8,7 +8,7 @@ $(document).ready(function(){
             },
             "kubmo": {
                 "button_label": "Go to the Kubmo website",
-                "button_url": "http://www.kubmo.builders/",
+                "button_url": "http://kubmo.org/",
             },
             "glassbreakers": {
                 "button_label": "Go to the Glassbreakers website",
