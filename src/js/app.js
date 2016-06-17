@@ -7,8 +7,8 @@ $(document).ready(function(){
                 "button_url": "http://fitstar.com/",
             },
             "kubmo": {
-                "button_label": "Go to the Kubmo website",
-                "button_url": "http://kubmo.org/",
+                "button_label": "Go to the FitStar website",
+                "button_url": "http://fitstar.com/",
             },
             "glassbreakers": {
                 "button_label": "Go to the Glassbreakers website",
