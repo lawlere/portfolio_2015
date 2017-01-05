@@ -15,6 +15,7 @@ machine:
 dependencies:
   pre:
     - npm install -g grunt-cli
+    - rm -rf dist/
   post:
     - grunt:
         timeout: 300 # 5 min
