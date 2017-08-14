@@ -2,15 +2,19 @@
 
 @import "bootstrap/variables.less";
 
-@brand-primary: #15E2C4;
+@brand-primary: #E8536A;
 @hover-color: #35fee1;
 
+a {
+  color: #E8536A;
+}
+
 a:hover {
-    color: @hover-color;
+    color: #E8536A;
 }
 
 body {
-    background-color: #F4F4F4;
+    background-color: #FFF7FA;
 }
 
 img {
@@ -23,7 +27,7 @@ img {
 
 #bay-image {
     height: 700px;
-    background-image: url("/img/bay-image.jpg");
+    background-image: url("/img/header.png");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: 50% 50%;
@@ -36,85 +40,90 @@ img {
     }
 
     #lawler-logo {
-        width: 357px;
-        padding-top: 40px;
+        width: 140px;
+        padding-top: 60px;
     }
     #tagline {
-        color: white;
-        font-weight: 100;
+        color: #3D1812;
+        font-weight: 500;
         margin: 0 auto;
-    }
-
-    .social-icons {
-        margin-top: 30px;
-        .icon {
-            width: 60px;
-            margin: 30px;
-        }
+        width: 80%;
     }
 
     /*
     Note: These values probably have to be changed
-    if the tagline changes. Widths are defined in 
+    if the tagline changes. Widths are defined in
     boostrap/variables.less file.
     */
     @media (max-width: (@screen-xs-min - 1)) {
         // iPhone hits here when vertical
-        #tagline { 
+        #tagline {
             font-size: 40px;
-            padding-top: 180px;
-            font-weight: 300;
+            padding-top: 100px;
         }
-        .social-icons { 
-            margin-top: 20px; 
-            .icon {
-                width: 40px;
-                margin: 20px;
-            }
+
+        .social-icons .icon {
+            width: 30px;
+            padding-top: 100px;
+            margin-right: 20px;
+            margin-left: 20px;
+        }
+        .content {
+            padding: 0 10%;
         }
     }
 
     @media (min-width: @screen-xs-min) {
-        #tagline { 
+        #tagline {
             font-size: 60px;
-            padding-top: 180px;
-            font-weight: 100;
+            padding-top: 80px;
         }
-        .social-icons { 
-            margin-top: 20px; 
-            .icon {
-                width: 50px;
-                margin: 30px;
-            }
+
+        .social-icons .icon {
+            width: 30px;
+            padding-top: 80px;
+            margin-right: 20px;
+            margin-left: 20px;
+        }
+        .content {
+            padding: 0 10%;
         }
     }
 
     @media (min-width: @screen-sm-min) {
-        #tagline { 
-            font-size: 75px;
-            padding-top: 160px;
-            font-weight: 100;
+        #tagline {
+            font-size: 60px;
+            padding-top: 100px;
         }
-        .social-icons { margin-top: 30px; }
+        .social-icons .icon {
+            padding-top: 110px;
+        }
     }
 
     @media (min-width: @screen-md-min) {
         #tagline {
-            padding-top: 200px;
-            font-size: 75px;
+            padding-top: 130px;
+            font-size: 60px;
         }
         .social-icons .icon {
-            width: 60px;
+            width: 30px;
+            padding-top: 100px;
+            margin-right: 20px;
+            margin-left: 20px;
+        }
+        .content {
+            padding: 0 10%;
         }
     }
 
     @media (min-width: @screen-lg-min) {
         #tagline {
-            padding-top: 200px;
+            padding-top: 150px;
             font-size: 60px;
         }
         .social-icons .icon {
-            width: 60px;
+            width: 30px;
+            padding-top: 110px;
         }
         .content {
             padding: 0 10%;
@@ -151,7 +160,7 @@ img {
     img {
         max-width: 100%;
     }
-    
+
     hover {
         color: yellow;
     }
@@ -188,7 +197,7 @@ This governs the carousel sections
         font-weight: 400;
         padding-top: 20px;
         padding-bottom: 20px;
-        text-align: left; 
+        text-align: left;
     }
     p {
         font-size: 18px;
@@ -269,27 +278,6 @@ This governs the carousel sections
     }
 }
 
-.navbar {
-    display: none; // Shown selectively by mermaid.js
-
-    border: 0;
-    height: @navbar-height;
-    .container, .row, .col, .pull_right, a {
-        height: @navbar-height;
-    }
-    a { display: inline-block;}
-    background-color: @brand-primary;
-    .center {text-align: center;}
-    img {
-        max-height: 100%;
-        max-width: 100%;
-        padding: 10px 0;
-        &.icon {
-            padding: 20px 0 20px 20px;
-        }
-    }
-}
-
 #jobs-stacked {
     .col {
         padding: 0;
@@ -298,6 +286,8 @@ This governs the carousel sections
 
 .work_section {
     border-bottom: 1px solid #E0EEEE;
+    margin-bottom: 40px;
+    padding-bottom: 20px;
 }
 
 #jobs-carousel img {

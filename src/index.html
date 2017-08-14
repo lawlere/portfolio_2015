@@ -3,7 +3,7 @@
     <head>
         <meta charset=utf-8>
         <title>Emma Lawler</title>
-        <meta name="description" content="Emma Lawler is a digital product designer based in San Francisco. She currently works on fitness and diversity products for mobile, desktop, and wearable devices.">
+        <meta name="description" content="Emma Lawler is a digital product designer. She works on products for mobile, desktop, and wearable devices.">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
         <!-- Favicons -->
@@ -37,7 +37,7 @@
 
         <!-- Social media meta tags -->
         <meta property="og:site_name" content="Emma Lawler"/>
-        <meta property="og:description" content="Emma Lawler is a digital product designer based in San Francisco. She currently works on fitness and diversity products for mobile, desktop, and wearable devices."/>
+        <meta property="og:description" content="Emma Lawler is a digital product designer. She works on products for mobile, desktop, and wearable devices."/>
         <meta property="og:image" content="http://www.emmalawler.com/img/opengraph.png" />
         <meta property="og:image:secure_url" content="https://www.emmalawler.com/img/opengraph.png" />
         <meta property="og:image:type" content="image/png" />
@@ -48,13 +48,13 @@
         <meta property="og:link" content="https://www.emmalawler.com"/>
         <meta property="twitter:card" content="summary"/>
         <meta property="twitter:title" content="Emma Lawler"/>
-        <meta property="twitter:description" content="Emma Lawler is a digital product designer based in San Francisco. She works on products for mobile, desktop, and wearable devices."/>
+        <meta property="twitter:description" content="Emma Lawler is a digital product designer. She works on products for mobile, desktop, and wearable devices."/>
         <meta property="twitter:site" content="@emmalawler24"/>
         <meta property="twitter:creator" content="@emmalawler24"/>
 
         <meta name="theme-color" content="#ffffff">
 
-        <link href="//fonts.googleapis.com/css?family=Lato:100,300,400" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900" rel="stylesheet">
         <!-- build:css css/style.pkg.css -->
         <link rel="stylesheet" href="app.css" />
         <!-- add any other stylesheets inside here... -->
@@ -72,10 +72,10 @@
                 height:100%;
                 width: 100%;
 
-                background: -webkit-linear-gradient(left top, #00FF9F , #23AEA7); /* For Safari 5.1 to 6.0 */
-                background: -o-linear-gradient(bottom right, #00FF9F, #23AEA7); /* For Opera 11.1 to 12.0 */
-                background: -moz-linear-gradient(bottom right, #00FF9F, #23AEA7); /* For Firefox 3.6 to 15 */
-                background: linear-gradient(to bottom right, #00FF9F , #23AEA7); /* Standard syntax */
+                background: -webkit-linear-gradient(left top, #FCE5E9 , #FCF5F6); /* For Safari 5.1 to 6.0 */
+                background: -o-linear-gradient(bottom right, #FCE5E9, #FCF5F6); /* For Opera 11.1 to 12.0 */
+                background: -moz-linear-gradient(bottom right, #FCE5E9, #FCF5F6); /* For Firefox 3.6 to 15 */
+                background: linear-gradient(to bottom right, #FCE5E9 , #FCF5F6); /* Standard syntax */
             }
             #preload td {
                 vertical-align: middle;
@@ -93,10 +93,14 @@
                 margin: 0 auto;
                 display: block;
             }
+
+            #pre-load img {
+                width: 180px;
+            }
+
             @media screen and (min-width: 992px) {
                 #pre-load-splash { max-width: 20%; }
             }
-
 
             #post-load {
                 /* Reverted by app.js when everything is done */
@@ -107,40 +111,13 @@
     <body>
         <!-- Anything here renders BEFORE the main content -->
         <table id="pre-load"> <!-- Thanks, css -->
-            <td> 
+            <td>
                 <img id="pre-load-splash" src="/img/preload.png" alt="Emma Lawler"/>
             </td>
         </table>
 
         <!-- Anything here renders AFTER the page load -->
         <div id="post-load">
-            <nav class="navbar navbar-default navbar-fixed-top">
-                <div class="container">
-                    <div class="row">
-                        <!-- Mobile header -->
-                        <div class="col col-xs-12 visible-xs center">
-                            <img class="header-logo" src="/img/logo_single.png"/>
-                        </div>
-                        <!-- Non-mobile header --> 
-                        <div class="col col-sm-4 hidden-xs">
-                            <img class="header-logo pull-left " src="/img/logo_single.png"/>
-                        </div>
-                        <div class="col col-sm-8 hidden-xs">
-                            <div class="pull-right">
-                                <a href="https://twitter.com/emmalawler24" target="_blank">
-                                    <img src="/img/twitter.png" alt="twitter" class="icon">
-                                </a>
-                                <a href="https://www.linkedin.com/in/emmalawler" target="_blank">
-                                    <img src="/img/linkedin.png" alt="linkedin" class="icon">
-                                </a>
-                                <a href="mailto:lawlere24@gmail.com">
-                                    <img src="/img/email.png" alt="email" class="icon">
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </nav>
             <div class="container-fluid">
                 <div id="bay-image" class="row">
                     <div class="content">
@@ -170,13 +147,6 @@
 
                 <!-- He's where our content goes -->
                 <div id="mermaid-panel">
-                </div>
-
-                <!-- Bottom buttons -->
-                <div class="row" id="bottom-button-row">
-                    <a href="#" target="_blank" class="col-xs-12" id="bottom-button-href">
-                        <h3 class="text-center" id="bottom-button-content">Bottom Button</h3>
-                    </a>
                 </div>
             </div>
         </div>
